@@ -8,6 +8,13 @@ class ContactList
 	public $email;
 	public $phonenumber;
 
+	public function confirmEmail(){
+		global $db;
+		$query = $db->query("  
+			SELECT * FROM contacts WHERE email = '$this->email'
+			");
+		return $query;
+	}
 
     public function addContacnt()
     {
@@ -16,6 +23,15 @@ class ContactList
 		INSERT INTO contacts (name, lastname, email, phonenumber) VALUES (?,?,?,?)
     		");
     	$execute = $prepare->execute(array($this->name,$this->lastname,$this->email,$this->phonenumber));
+    }
+
+    public static function selectAllContact()
+    {
+    	global $db;
+    	$query = $db->query("  
+		SELECT phonenumber FROM contacts 
+    		");
+    	return $query;
     }
 
     public static function selectContact($name)

@@ -30,7 +30,13 @@
 				<h5 class="head">Редактирование контактов</h5>
 				<label>Номер телефона<br>
 				<select id="editcontact">
-					<option></option>
+					<?php 
+				$selectNum = new ContactList;
+				$queryAll  = $selectNum::selectAllContact();
+				foreach ($queryAll as $value):
+				?>
+					<option><?php echo $value['phonenumber'];?></option>
+				<?php endforeach?>
 				</select>
 				</label>
 				<label>Имя<br>

@@ -9,11 +9,9 @@ $contact->lastname = $_POST['lastname'];
 $contact->email = $_POST['email'];
 $contact->phonenumber = $_POST['phonenumber'];
 
-$contact->addContacnt();
-
-if($contact->addContacnt()){
-	echo 1;
+if($contact->addContacnt() == true){
+	echo 0;
 } else{
-	echo 2;
+	echo 1;
 }
 ?>

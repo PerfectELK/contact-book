@@ -1,6 +1,23 @@
 $(document).ready(function(){
 
-	 $("#phonenumber").mask("8(999) 999-99 99");
+	function checkMail(){
+		$.ajax({
+			url: '../controller/confirmEmail.php',
+			type: 'POST',
+			dataType: 'html',
+			data: {
+				   email: $('#email').val(),
+			 },
+			 success: function successMail(data){ 	
+			if (data == 1){
+				$('#create').prop("disabled", true);
+			}
+		}
+
+	});
+}
+
+	$("#phonenumber").mask("8(999) 999-99 99");
 
 	$('#create').click(function(event) {
 		
@@ -13,18 +30,15 @@ $(document).ready(function(){
 				   email: $('#email').val(),
 				   phonenumber: $('#phonenumber').val()
 			 },
-		})
-		success: function success(data){
+			 success: function success(data){
 			if(data == 1){
-				alert("пидор");
 				setTimeout('document.location.href="/"',1500);
 			} else{
-				alert(data);
+				console.log(data);
 			}
 		}
-		fail: function failed(data){
-			alert(data);
-		}
+		})
+		
 	});
 
 function checkPhone(){
@@ -43,22 +57,13 @@ function checkPhoneint(){
 
 	var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
 function testButton(){
-	if(($('#name').val().length < 2)  || ($('#lastname').val().length < 3) || (!pattern.test($('#email').val())) || (checkPhone() == false) ){
+	if(($('#name').val().length < 2)  || ($('#lastname').val().length < 3) || (!pattern.test($('#email').val())) || (checkPhone() == false)){
 		 $('#create').prop("disabled", true);
 	} else {
 		$('#create').prop("disabled", false);
 	}
 }
-setInterval(testButton, 500);
-setInterval(checkPhoneint, 500);
-
-
-
-
-
-
-
-
-
-
+setInterval(checkMail,10); 
+setInterval(testButton, 600);
+setInterval(checkPhoneint, 600);
 });
