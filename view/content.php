@@ -27,10 +27,12 @@
 		</div>
 		<div class="col-6">
 			<div class="formcontainer">
-				<h5 class="head">Редактирование контактов:</h5>
+				<h5 class="head">Редактирование контактов</h5>
+				<label>Номер телефона<br>
 				<select id="editcontact">
 					<option></option>
 				</select>
+				</label>
 				<label>Имя<br>
 				<input type="text" id="nameedit">
 				</label>
