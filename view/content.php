@@ -1,3 +1,42 @@
+<!-- Модальное окно -->  
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Список контактов</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+        	<tr>
+        		<th>Имя</th>
+        		<th>Фамилия</th>
+        		<th>Почта</th>
+        		<th>Телефон</th>
+        	</tr>
+        	<?php
+        	$allContacts = new ContactList;
+        	$contacts = $allContacts::findAllContact();
+        	foreach($contacts as $contact):
+        	?>
+        	<tr>
+        		<td><? echo $contact['name'];?></td>
+        		<td><? echo $contact['lastname'];?></td>
+        		<td><? echo $contact['email'];?></td>
+        		<td><? echo $contact['phonenumber'];?></td>
+        	</tr>
+        <?php endforeach?>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-12 insert-h">
@@ -49,7 +88,7 @@
 				<input type="text" id="emailedit">
 				</label>
 				<label>Номер телефона<br>
-				<input type="text" id="phonenumberedit">
+				<input type="text" id="phonenumberedit" readonly>
 				</label>
 				<button id="edit" class="btn btn-primary">
 				Внести изменения
@@ -84,7 +123,7 @@
 		<div class="col-6">
 			<div class="formcontainer">
 				<h5 class="head">Показать список контактов</h5>
-				<button id="listcontacts" class="btn btn-info">
+				<button id="listcontacts" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 				Показать
 				</button>
 			</div>

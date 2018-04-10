@@ -19,6 +19,8 @@ $(document).ready(function(){
 
 	$("#phonenumber").mask("8(999) 999-99 99");
 
+	$("#phonenumberedit").mask("8(999) 999-99 99");
+
 	$('#create').click(function(event) {
 		
 		$.ajax({
@@ -66,4 +68,46 @@ function testButton(){
 setInterval(checkMail,10); 
 setInterval(testButton, 600);
 setInterval(checkPhoneint, 600);
+
+
+$('#editcontact').change(function(event) {
+	$.ajax({
+			url: '../controller/select.php',
+			type: 'POST',
+			dataType: 'html',
+			data: { phonenumber: $('#editcontact').val()
+			 },
+			success: function success(data){
+				var dataform = JSON.parse(data);
+				$("#nameedit").val(dataform.name);
+				$("#lastnameedit").val(dataform.lastname);
+				$("#emailedit").val(dataform.email);
+				$("#phonenumberedit").val(dataform.phonenumber);
+
+			}
+	});
+
+});
+
+$('#edit').click(function(event) {
+	$.ajax({
+			url: '../controller/edit.php',
+			type: 'POST',
+			dataType: 'html',
+			data: { name: $("#nameedit").val(),
+					lastname: $("#lastnameedit").val(),
+					email: $("#emailedit").val(),
+					phonenumber: $("#phonenumberedit").val(),
+			 },
+			success: function success(data){
+				if(data == 1){
+					console.log(data);
+				} else{
+					setTimeout('document.location.href="/"',1500);
+				}
+			}
+	});
+});
+
+
 });

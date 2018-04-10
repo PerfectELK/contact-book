@@ -34,6 +34,25 @@ class ContactList
     	return $query;
     }
 
+    public static function findAllContact()
+    {
+    	global $db;
+    	$query = $db->query("  
+		SELECT * FROM contacts 
+    		");
+    	return $query;
+    }
+
+    public function findContact()
+    {
+		global $db;
+
+		$query = $db->query("  
+		SELECT * FROM contacts WHERE phonenumber = '$this->phonenumber'
+			");
+		return $query;
+    }
+
     public static function selectContact($name)
     {
     	global $db;
@@ -43,12 +62,12 @@ class ContactList
     	return $query;
     }
 
-    public function editContacnt($name,$lastname,$mail,$phonenumber,$selectnumber)
+    public function editContacnt($selectnumber)
     {
     	global $db;
     	$prepare = $db->prepare("  
-			UPDATE contacts SET name = ?, lastname = ?, $mail = ?, phonenumber = ? WHERE phonenumber = '$selectnumber'");
-    	$execute = $prepare->execute(array($name,$lastname,$mail,$phonenumber));
+			UPDATE contacts SET name = ?, lastname = ?, email = ?, phonenumber = ? WHERE phonenumber = '$selectnumber'");
+    	$execute = $prepare->execute(array($this->name,$this->lastname,$this->email,$this->phonenumber));
     }
     public function removeContact($email)
     {

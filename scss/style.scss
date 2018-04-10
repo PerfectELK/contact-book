@@ -7,8 +7,12 @@ body{
 	background-size: cover;
 }
 .container{
-	background-color: #ddd;
+	background-color: rgba(244,244,244,.3);
 	margin-top: 100px;
+	-webkit-box-shadow: 12px 11px 200px 95px rgba(0,0,0,1);
+-moz-box-shadow: 12px 11px 200px 95px rgba(0,0,0,1);
+box-shadow: 12px 11px 200px 95px rgba(0,0,0,1);
+
 }
 .insert-h{
 	text-align: center;
