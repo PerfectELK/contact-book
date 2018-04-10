@@ -15,7 +15,7 @@ class ContactList
     	$prepare = $db->prepare("  
 		INSERT INTO contacts (name, lastname, email, phonenumber) VALUES (?,?,?,?)
     		");
-    	$execute = $db->execute(array($this->name,$this->lastname,$this->email,$this->phonenumber));
+    	$execute = $prepare->execute(array($this->name,$this->lastname,$this->email,$this->phonenumber));
     }
 
     public static function selectContact($name)
@@ -32,7 +32,7 @@ class ContactList
     	global $db;
     	$prepare = $db->prepare("  
 			UPDATE contacts SET name = ?, lastname = ?, $mail = ?, phonenumber = ? WHERE phonenumber = '$selectnumber'");
-    	$execute = $db->execute(array($name,$lastname,$mail,$phonenumber));
+    	$execute = $prepare->execute(array($name,$lastname,$mail,$phonenumber));
     }
     public function removeContact($email)
     {
