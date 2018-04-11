@@ -1,5 +1,5 @@
 <!-- Модальное окно -->  
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal ContactList fade" id="ContactList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -37,10 +37,42 @@
   </div>
 </div>
 
+<div class="modal ContactList fade" id="ContactFind" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Контакт</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+        	<tr>
+        		<th>Имя</th>
+        		<th>Фамилия</th>
+        		<th>Почта</th>
+        		<th>Телефон</th>
+        	</tr>
+        	<tr>
+        		<td id="namefinded"></td>
+        		<td id="lastnamefinded"></td>
+        		<td id="emailfinded"></td>
+        		<td id="phonenumberfinded"></td>
+        	</tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-12 insert-h">
-			<h2>Создание, хранение и изменение контактной инофрмации</h2>
+			<h2>Создание, хранение и изменение контактной инфoрмации</h2>
 		</div>
 	</div>
 	<div class="row block-1">
@@ -101,7 +133,7 @@
 				<label>Имя<br>
 					<input type="text" id="namefind">
 				</label>
-				<button id="find" class="btn btn-primary">
+				<button id="find" class="btn btn-primary" data-toggle="modal" data-target="#ContactFind">
 				Найти
 				</button>
 				<div class="findcontacts">
@@ -123,7 +155,7 @@
 		<div class="col-6">
 			<div class="formcontainer">
 				<h5 class="head">Показать список контактов</h5>
-				<button id="listcontacts" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+				<button id="listcontacts" class="btn btn-info" data-toggle="modal" data-target="#ContactList">
 				Показать
 				</button>
 			</div>

@@ -109,5 +109,44 @@ $('#edit').click(function(event) {
 	});
 });
 
+$('#find').click(function(event) {
+	$.ajax({
+			url: '../controller/find.php',
+			type: 'POST',
+			dataType: 'html',
+			data: { namefind: $("#namefind").val()
+			 },
+			success: function success(data){
+				var dataform = JSON.parse(data);
+				$("#namefinded").text(dataform.name);
+				$("#lastnamefinded").text(dataform.lastname);
+				$("#emailfinded").text(dataform.email);
+				$("#phonenumberfinded").text(dataform.phonenumber);
+}
+	});
+
+});			
+
+$('#delete').click(function(event) {
+	$.ajax({
+			url: '../controller/delete.php',
+			type: 'POST',
+			dataType: 'html',
+			data: { emaildelete: $("#emaildelete").val()
+			 },
+			success: function success(data){
+				if(data == 1){
+					alert('Что-то пошло не так...');
+					setTimeout('document.location.href="/"',1500);
+				} else{
+					alert('Удаление прошло успешно');
+					setTimeout('document.location.href="/"',1500);
+				}
+}
+	});
+
+});	
+
+
 
 });

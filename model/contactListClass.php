@@ -53,11 +53,11 @@ class ContactList
 		return $query;
     }
 
-    public static function selectContact($name)
+    public function selectContact()
     {
     	global $db;
     	$query = $db->query("  
-		SELECT * FROM contacts WHERE name = '$name'
+		SELECT * FROM contacts WHERE name = '$this->name'
     		");
     	return $query;
     }
@@ -69,11 +69,11 @@ class ContactList
 			UPDATE contacts SET name = ?, lastname = ?, email = ?, phonenumber = ? WHERE phonenumber = '$selectnumber'");
     	$execute = $prepare->execute(array($this->name,$this->lastname,$this->email,$this->phonenumber));
     }
-    public function removeContact($email)
+    public function removeContact()
     {
     	global $db;
     	$delete = $db->exec("
-			DELETE FROM contacts WHERE email = '$email'
+			DELETE FROM contacts WHERE email = '$this->email'
     		");
     }
 }

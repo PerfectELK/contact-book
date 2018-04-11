@@ -5,9 +5,10 @@ body,html,*{
 body{
 	background: url('http://gagauznews.md/wp-content/uploads/2016/02/site-bg.jpg') no-repeat;
 	background-size: cover;
+	color:#fff;
 }
 .container{
-	background-color: rgba(244,244,244,.3);
+	background-color: rgba(0,0,0,.8);
 	margin-top: 100px;
 	-webkit-box-shadow: 12px 11px 200px 95px rgba(0,0,0,1);
 -moz-box-shadow: 12px 11px 200px 95px rgba(0,0,0,1);
@@ -35,4 +36,13 @@ box-shadow: 12px 11px 200px 95px rgba(0,0,0,1);
 	margin-right: 40px;
 	margin-left: 30px;
 	margin-top: 30px;
+}
+.ContactList{
+	color:#000;
+}
+#editcontact{
+	color:#000;
+}
+input{
+	color:#000;
 }
